@@ -5,11 +5,20 @@ import {
     Image,
     StyleSheet,
 } from 'react-native';
+import Icon from  '../icon/IconFont'
 
 export default class home extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+
+        }
+    }
     render() {
         return (
             <View style={styles.container}>
+                <Icon name={"right"} size={20} color={"#FFBC01"}
+                      style={{backgroundColor: 'transparent', marginTop:1}}/>
                 <Text>首页</Text>
             </View>
         );
