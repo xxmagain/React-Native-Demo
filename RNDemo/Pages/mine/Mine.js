@@ -10,7 +10,7 @@ export default class mine extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>我的</Text>
+                <Text>我的CCCC</Text>
             </View>
         );
     }
