@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import {View, Text, Image} from "react-native";
+import {View, Text, Image, TouchableOpacity} from "react-native";
 import Icon from '../../icon/IconFont'
-
+import {Actions} from "react-native-router-flux";
 export default class ArticleItem extends Component<{}> {
     constructor(props) {
         super(props)
@@ -12,7 +12,11 @@ export default class ArticleItem extends Component<{}> {
 
     render() {
         return (
-            <View style={{
+            <TouchableOpacity
+                onPress={()=>{
+                    Actions.push("ArticleDetail",{id:this.state.data.postId})
+                }}
+                style={{
                 width: '100%',
                 marginTop: 20,
                 paddingBottom: 20,
@@ -75,7 +79,7 @@ export default class ArticleItem extends Component<{}> {
                     }}>{this.state.data.reading}</Text>
                 </View>
 
-            </View>
+            </TouchableOpacity>
         )
     }
 }

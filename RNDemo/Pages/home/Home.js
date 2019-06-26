@@ -12,6 +12,7 @@ import {
 import {SCREEN_WIDTH} from '../Constant'
 import Swiper from "../../node_modules/react-native-swiper/index";
 import ArticleItem from "./items/ArticleItem";
+import Navigation from "../common/Navigation";
 
 export default class Home extends Component<{}> {
     constructor(props) {
@@ -29,30 +30,14 @@ export default class Home extends Component<{}> {
 
     renderNav() {
         return (
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                height: 64,
-                backgroundColor: '#fff'
-            }}>
-                <View style={{
-                    width: '100%',
-                    height: 64,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    paddingTop: 20,
-                    backgroundColor: '#fff'
-                }}>
-                    <Text style={{fontSize: 18, color: '#282828', fontWeight: 'bold'}}>{'首页'}</Text>
-                </View>
-            </View>
+            <Navigation title={"首页"} showBack={false}/>
         )
     }
 
     renderSwiper() {
         return (
             <View style={{height: 200}}>
-                <Swiper autoplay loop={true} style={{backgroundColor: 'red', height: 200}} paginationStyle={{
+                <Swiper autoplay loop={true} style={{height: 200}} paginationStyle={{
                     bottom: 10,
                 }}>
                     <Image style={{width: '100%', height: 200}}

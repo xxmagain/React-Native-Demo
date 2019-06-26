@@ -4,6 +4,7 @@ import {Lightbox, Scene, Tabs,Actions} from "react-native-router-flux";
 import Home from "../home/Home";
 import Movie from "../movie/Movie";
 import Mine from "../mine/Mine";
+import ArticleDetail from "../home/details/ArticleDetail";
 
 const HomeTabIcon = ({focused, title}) => {
     if (focused) {
@@ -56,7 +57,6 @@ const MineTabIcon = ({focused, title}) => {
 const scenes = Actions.create(
     <Lightbox>
         <Scene key="root" SceneStyle={{backgroundColor: '#FFF'}}>
-            {/*<Scene key="HomePage" component={Home} title="" hideNavBar={true} initial={true}/>*/}
             <Tabs
                 key="tabbar"
                 name="tabbar"
@@ -82,6 +82,7 @@ const scenes = Actions.create(
                        icon={MovieTabIcon}/>
                 <Scene key="Mine" component={Mine} title="123" hideNavBar={true} icon={MineTabIcon}/>
             </Tabs>
+            <Scene key="ArticleDetail" component={ArticleDetail} title="" hideNavBar={true}/>
         </Scene>
     </Lightbox>
 )

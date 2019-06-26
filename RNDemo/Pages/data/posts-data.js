@@ -3,12 +3,12 @@ var local_database = [
         date: "6 18 2019",
         title: "较真丨吃糖太多影响儿童大脑发育？这是伪科学",
         imgSrc: "https://inews.gtimg.com/newsapp_bt/0/9478582858/1000",
-        avatar: "/images/avatar/1.png",
+        avatar: "https://q2.qlogo.cn/g?b=qq&k=N8SWyicSuCN9CmxxPhNicib0g&s=40&t=0",
         content:"“吃糖引起智力下降，是因为人体大脑体液的酸碱度(即PH值)与智商有直接关系。体液酸性偏高时，智商较低”。这其实是人体“酸碱理论”的变种。人体酸碱理论已经被广为批驳，其创始人也在美国受到了法律的惩处。人体有精密的调节体系，不管吃什么喝什么，血液的pH值都被精确地维持在7.35到7.45的范围。所以，“大脑体液的酸碱度与智商有直接关系”是伪科学，吃糖并不会导致人智力下降。",
         reading: "112",
         collection: "96",
-        headImgSrc: "https://q2.qlogo.cn/g?b=qq&k=N8SWyicSuCN9CmxxPhNicib0g&s=40&t=0",
-        author: "marthaywang",
+        headImgSrc: "https://inews.gtimg.com/newsapp_bt/0/9478582858/1000",
+        author: "林白衣",
         dateTime: "24小时前",
         detail:"吃糖过多不利健康，尤其是儿童健康，这已经广为人知。而网上流传的一篇《吃糖过多会引起智力下降》，似乎为糖的危害增加了一个重重的砝码。正确的主张并不需要虚假的理由去支撑，“吃糖引起智力下降”是真的吗？\n" +
         "\n" +
@@ -49,7 +49,7 @@ var local_database = [
         content:"中国城乡差异较大，城市居民在掌握信息和填报志愿的策略性上都可能强于农村居民。因此，平行志愿可能比梯度志愿更加适合中国的高考制度。",
         reading: "201",
         collection: "36",
-        headImgSrc: "https://thirdwx.qlogo.cn/mmopen/vi_32/ZPHr20RIICvb95d5cLqK9tUhic2PpvaJhnYGbfrN5fZ4YodUzKHiaVEGumYiaibpx1IAQ4u4VF1PK5ueTPAng9aUwg/132",
+        headImgSrc: "https://inews.gtimg.com/newsapp_bt/0/9472854503/1000",
         author: "xxxx",
         dateTime: "20小时前",
         detail:"这两日，各省高考成绩纷纷出炉，填报志愿在即。目前考生们最关心的话题莫过于，自己的分数能不能上XX大学？填报志愿时是要\"冲一冲\"，还是”稳一稳“？怎么判断哪所学校稳了？传说中的考得好不如报的好是真的么？\n" +
@@ -65,7 +65,7 @@ var local_database = [
         content:"最近，有新闻称印度比哈尔邦16天内103名儿童死于脑炎，疑似与吃荔枝有关。一时间荔枝病又成了热点。荔枝病的主要表现为呕吐、头晕、昏迷甚至死亡，它的本质是一种致命的“低血糖脑病”——荔枝中含有的降糖氨酸A和亚甲基环丙基甘氨酸（MCPG）两种化学物质，，如果被动物和人体大量摄入就会造成血糖降低和代谢紊乱。儿童对这种毒素的敏感性更高，也更容易因为贪食而摄入过量的荔枝，导致血糖过低。由于荔枝病的症状和病毒性脑病有相似之处，医生很容易误诊。所以即便及时诊断，迅速补糖，被救活的儿童的大脑也常常已经受损，常见后遗症包括认知障碍、肌无力或运动障碍。",
         reading: "312",
         collection: "56",
-        headImgSrc: "https://q3.qlogo.cn/g?b=qq&k=wzc17Oh1gFgSxru7hBiaZAw&s=40&t=1439995955",
+        headImgSrc: "https://inews.gtimg.com/newsapp_ls/0/9466966762_294195/0",
         author: "谢望时",
         dateTime: "4小时前",
         detail:"炎炎夏季，又到了一个荔枝上市的季节。最近，有新闻称印度比哈尔邦16天内103名儿童死亡，疑似与吃荔枝有关。一时大家议论纷纷，表示不敢有“日啖荔枝三百颗，不辞常作岭南人”的念想，生怕吃了荔枝会有生命危险。荔枝真的有这么恐怖吗？\n" +
