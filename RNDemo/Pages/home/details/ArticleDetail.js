@@ -4,7 +4,7 @@ import {ScrollView, View, Image, Text, TouchableOpacity,ToastAndroid} from "reac
 import * as AppStorage from "../../tools/APPStorage";
 import Toast from 'react-native-root-toast';
 var postsData = require('../../data/posts-data.js')
-export default class ArticleDetail extends PureComponent<{}> {
+export default class ArticleDetail extends PureComponent<{}>{
     constructor(props) {
         super(props)
         this.id = this.props.id
@@ -14,21 +14,19 @@ export default class ArticleDetail extends PureComponent<{}> {
         }
     }
 
-    componentDidMount() {
-        console.log(this.id)
+    componentDidMount(){
         AppStorage.getCollect(this.id, (res) => {
             if (res) {
                 this.setState({
-                    isCollect: true
+                    isCollect: true,
+                    data: postsData.postList[this.id]
                 })
             } else {
                 this.setState({
-                    isCollect: false
+                    isCollect: false,
+                    data: postsData.postList[this.id]
                 })
             }
-        })
-        this.setState({
-            data: postsData.postList[this.id]
         })
     }
 
