@@ -66,6 +66,11 @@ export default class movie extends Component {
         Actions.push("MoreMovie",{type:type})
     }
     render() {
+        if(this.state.isLoading){
+            return(
+                <LoadingView loading={true}/>
+            )
+        }
         return (
             <View style={styles.container}>
                 <Navigation title={"电影"} showBack={false}/>
@@ -75,7 +80,6 @@ export default class movie extends Component {
                     {this.state.inTheaters ? <MovieItem titleType={"正在热映"} data={this.state.inTheaters} moreBack={()=>{this.goToMore("inTheaters")}}/> : null}
                     {this.state.comingSoon ? <MovieItem titleType={"即将上映"} data={this.state.comingSoon} moreBack={()=>{this.goToMore("comingSoon")}}/> : null}
                     {this.state.top? <MovieItem titleType={"豆瓣Top250"} data={this.state.top} moreBack={()=>{this.goToMore("top")}}/> : null}
-                    <LoadingView loading={this.state.isLoading}/>
                 </ScrollView>
             </View>
         );

@@ -1,16 +1,22 @@
 import React, {Component} from 'react';
-import {View, FlatList} from "react-native";
+import {View, FlatList, Text} from "react-native";
 import MovieItem from "./items/MovieItem";
 import * as Http from "../network/Http";
 import Navigation from "../common/Navigation";
 import LoadingView from "../common/LoadingView";
+import {SCREEN_WIDTH} from "../Constant";
 
 export default class MoreMovie extends Component<{}> {
     constructor(props) {
         super(props)
         this.state = {
             type: this.props.type,
-            data: []
+            data: [],
+            isHaveNext:false,
+            refreshing:false,
+            url:'',
+            totalCount:0,
+            total:0,
         }
     }
 
@@ -37,24 +43,44 @@ export default class MoreMovie extends Component<{}> {
                 break
         }
         this.setState({
+            url:url,
             isLoading: true
         })
-        this.getData(url)
+        this.getData(url,true)
     }
 
-    getData(url) {
+    getData(url,isEmpty) {
         Http.get(url, (res) => {
             console.log(res)
             this.setState({
+                refreshing:false,
                 isLoading: false,
-                data: res.subjects
+                data:isEmpty?res.subjects:this.state.data.concat(res.subjects),
+                total:res.total,
+                totalCount:this.state.totalCount+=20
             })
         }, (err) => {
             this.setState({
-                isLoading: false
+                isLoading: false,
+                refreshing:false,
             })
             console.log('获取电影数据失败')
         })
+    }
+
+    onRefresh(){
+        this.setState({
+            totalCount:0,
+            refreshing:true,
+        })
+        var url = this.state.url + "?star=0&count=20";
+        this.getData(url,true)
+    }
+
+    loadMoreData(){
+        var nextUrl = this.state.url +
+            "?start=" + this.state.totalCount + "&count=20";
+        this.getData(nextUrl,false)
     }
 
     renderItem({item, index}) {
@@ -62,10 +88,42 @@ export default class MoreMovie extends Component<{}> {
             <MovieItem data={item}/>
         )
     }
-
+    ListFooterComponent() {
+        if (this.state.totalCount<this.state.total) {
+            return (
+                <View
+                    style={{
+                        width: SCREEN_WIDTH-32,
+                        height: 51,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginTop: 15
+                    }}
+                >
+                    <Text style={{fontSize: 12, color: "#747474"}}>-上滑加载更多-</Text>
+                </View>
+            );
+        } else {
+            return (
+                <View
+                    style={{
+                        width: SCREEN_WIDTH-32,
+                        height: 51,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginTop: 15
+                    }}
+                >
+                    <Text style={{fontSize: 12, color: "#747474"}}>-加载完成-</Text>
+                </View>
+            );
+        }
+    }
     render() {
-        if (this.state.data.length === 0) {
-            return null
+        if(this.state.isLoading){
+            return(
+                <LoadingView loading={true}/>
+            )
         }
         return (
             <View style={{
@@ -85,8 +143,12 @@ export default class MoreMovie extends Component<{}> {
                     data={this.state.data}
                     renderItem={this.renderItem.bind(this)}
                     key={'Grid'}
+                    onRefresh={() => this.onRefresh()}
+                    onEndReached={() => this.loadMoreData()}
+                    onEndReachedThreshold={this.state.totalCount<this.state.total ? 0.01 : -1}
+                    refreshing={this.state.refreshing}
+                    ListFooterComponent={this.ListFooterComponent.bind(this)}
                 />
-                <LoadingView loading={this.state.isLoading}/>
             </View>
         )
     }
