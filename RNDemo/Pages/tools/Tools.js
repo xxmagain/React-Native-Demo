@@ -11,6 +11,13 @@ const Tools = {
             }
         }
         return array;
+    },
+    convertToCastString(casts) {
+        var castsjoin = "";
+        for (var idx in casts) {
+            castsjoin = castsjoin + casts[idx].name + " / ";
+        }
+        return castsjoin.substring(0, castsjoin.length - 2);
     }
 }
-module.exports= Tools
+module.exports = Tools

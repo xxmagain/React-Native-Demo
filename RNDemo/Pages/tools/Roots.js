@@ -6,6 +6,7 @@ import Movie from "../movie/Movie";
 import Mine from "../mine/Mine";
 import ArticleDetail from "../home/details/ArticleDetail";
 import MoreMovie from "../movie/MoreMovie";
+import MovieDetail from "../movie/MovieDetail";
 
 const HomeTabIcon = ({focused, title}) => {
     if (focused) {
@@ -85,6 +86,7 @@ const scenes = Actions.create(
             </Tabs>
             <Scene key="ArticleDetail" component={ArticleDetail} title="" hideNavBar={true}/>
             <Scene key="MoreMovie" component={MoreMovie} title="" hideNavBar={true}/>
+            <Scene key="MovieDetail" component={MovieDetail} title="" hideNavBar={true}/>
         </Scene>
     </Lightbox>
 )
