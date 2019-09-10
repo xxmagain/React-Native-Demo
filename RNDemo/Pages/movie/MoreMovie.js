@@ -4,7 +4,7 @@ import MovieItem from "./items/MovieItem";
 import * as Http from "../network/Http";
 import Navigation from "../common/Navigation";
 import LoadingView from "../common/LoadingView";
-import {SCREEN_WIDTH} from "../Constant";
+import {SCREEN_WIDTH,Size} from "../tools/ScreenTools";
 
 export default class MoreMovie extends Component<{}> {
     constructor(props) {
@@ -94,13 +94,13 @@ export default class MoreMovie extends Component<{}> {
                 <View
                     style={{
                         width: SCREEN_WIDTH-32,
-                        height: 51,
+                        height: Size(51),
                         justifyContent: "center",
                         alignItems: "center",
-                        marginTop: 15
+                        marginTop: Size(15)
                     }}
                 >
-                    <Text style={{fontSize: 12, color: "#747474"}}>-上滑加载更多-</Text>
+                    <Text style={{fontSize: Size(12), color: "#747474"}}>-上滑加载更多-</Text>
                 </View>
             );
         } else {
@@ -108,13 +108,13 @@ export default class MoreMovie extends Component<{}> {
                 <View
                     style={{
                         width: SCREEN_WIDTH-32,
-                        height: 51,
+                        height: Size(51),
                         justifyContent: "center",
                         alignItems: "center",
-                        marginTop: 15
+                        marginTop: Size(15)
                     }}
                 >
-                    <Text style={{fontSize: 12, color: "#747474"}}>-加载完成-</Text>
+                    <Text style={{fontSize: Size(12), color: "#747474"}}>-加载完成-</Text>
                 </View>
             );
         }
@@ -134,9 +134,9 @@ export default class MoreMovie extends Component<{}> {
                 <FlatList
                     contentContainerStyle={{
                         backgroundColor:'#fff',
-                        paddingLeft:16,
-                        paddingRight:16,
-                        paddingBottom:16
+                        paddingLeft:Size(16),
+                        paddingRight:Size(16),
+                        paddingBottom:Size(16)
                     }}
                     horizontal={false}
                     numColumns={3}

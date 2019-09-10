@@ -7,20 +7,21 @@ import Mine from "../mine/Mine";
 import ArticleDetail from "../home/details/ArticleDetail";
 import MoreMovie from "../movie/MoreMovie";
 import MovieDetail from "../movie/MovieDetail";
+import {Size} from "./ScreenTools";
 
 const HomeTabIcon = ({focused, title}) => {
     if (focused) {
         return (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                <Image source={require('../images/tabs/home.png')} style={{width:30, height: 30}}/>
-                <Text style={{color: '#d81e06', fontSize: 11, includeFontPadding: false, marginTop:2,}}>首页</Text>
+                <Image source={require('../images/tabs/home.png')} style={{width:Size(30), height: Size(30)}}/>
+                <Text style={{color: '#d81e06', fontSize: Size(11), includeFontPadding: false, marginTop:Size(2),}}>首页</Text>
             </View>
         )
     }
     return (
         <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Image source={require('../images/tabs/home_unsel.png')} style={{width: 30, height:30}}/>
-            <Text style={{color: 'rgba(144, 147, 153, 1)', fontSize:11, includeFontPadding: false, marginTop:2,}}>首页</Text>
+            <Image source={require('../images/tabs/home_unsel.png')} style={{width:Size(30), height: Size(30)}}/>
+            <Text style={{color: 'rgba(144, 147, 153, 1)', fontSize: Size(11), includeFontPadding: false, marginTop:Size(2),}}>首页</Text>
         </View>
     )
 }
@@ -28,15 +29,15 @@ const MovieTabIcon = ({focused, title}) => {
     if (focused) {
         return (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                <Image source={require('../images/tabs/movie.png')} style={{width:30, height:30}}/>
-                <Text style={{color: '#d81e06', fontSize: 11, includeFontPadding: false, marginTop:2,}}>电影</Text>
+                <Image source={require('../images/tabs/movie.png')} style={{width:Size(30), height: Size(30)}}/>
+                <Text style={{color: '#d81e06',fontSize: Size(11), includeFontPadding: false, marginTop:Size(2),}}>电影</Text>
             </View>
         )
     }
     return (
         <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Image source={require('../images/tabs/movie_unsel.png')} style={{width:30, height:30}}/>
-            <Text style={{color: 'rgba(144, 147, 153, 1)', fontSize:11, includeFontPadding: false, marginTop:2,}}>电影</Text>
+            <Image source={require('../images/tabs/movie_unsel.png')} style={{width:Size(30), height: Size(30)}}/>
+            <Text style={{color: 'rgba(144, 147, 153, 1)', fontSize: Size(11), includeFontPadding: false, marginTop:Size(2),}}>电影</Text>
         </View>
     )
 }
@@ -44,15 +45,15 @@ const MineTabIcon = ({focused, title}) => {
     if (focused) {
         return (
             <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                <Image source={require('../images/tabs/mine.png')} style={{width:25, height:25}}/>
-                <Text style={{color: '#d81e06', fontSize: 11, includeFontPadding: false, marginTop:2,}}>我的</Text>
+                <Image source={require('../images/tabs/mine.png')} style={{width:Size(25), height:Size(25)}}/>
+                <Text style={{color: '#d81e06',fontSize: Size(11), includeFontPadding: false, marginTop:Size(2),}}>我的</Text>
             </View>
         )
     }
     return (
         <View style={{alignItems: 'center', justifyContent: 'center'}}>
-            <Image source={require('../images/tabs/mine_unsel.png')} style={{width:25, height:25}}/>
-            <Text style={{color: 'rgba(144, 147, 153, 1)', fontSize:11, includeFontPadding: false, marginTop:2,}}>我的</Text>
+            <Image source={require('../images/tabs/mine_unsel.png')} style={{width:Size(25), height:Size(25)}}/>
+            <Text style={{color: 'rgba(144, 147, 153, 1)', fontSize: Size(11), includeFontPadding: false, marginTop:Size(2),}}>我的</Text>
         </View>
     )
 }
@@ -67,10 +68,10 @@ const scenes = Actions.create(
                 tabBarStyle={{
                     borderTopColor: '#e7e9ed',
                     backgroundColor: '#FFF',
-                    paddingLeft:13,
-                    paddingRight:13,
+                    paddingLeft:Size(13),
+                    paddingRight:Size(13),
                     paddingBottom:0,
-                    height:60
+                    height:Size(60)
                 }}
                 lazy={true}
                 showLabel={false}

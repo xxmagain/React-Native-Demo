@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {ActivityIndicator, Text, TouchableOpacity, View} from "react-native";
+import {Size} from "../tools/ScreenTools";
 export default class LoadingView extends Component<{}> {
     constructor(props){
         super(props)
@@ -35,26 +36,26 @@ export default class LoadingView extends Component<{}> {
                         flexDirection: 'row',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        borderRadius: 3,
+                        borderRadius: Size(3),
                     }}>
 
                         <ActivityIndicator
                             style={{
-                                marginLeft:12,
-                                marginRight:7,
-                                width:16,
-                                height:16,
-                                marginTop:8,
-                                marginBottom:8,
+                                marginLeft:Size(12),
+                                marginRight:Size(7),
+                                width:Size(16),
+                                height:Size(16),
+                                marginTop:Size(8),
+                                marginBottom:Size(8),
                             }}
                             animating={true}
                             color={'#FCEA33'}/>
 
                         <Text style={{
                             color: '#282828',
-                            fontSize:14,
+                            fontSize:Size(14),
                             backgroundColor: 'transparent',
-                            marginRight:16
+                            marginRight:Size(16)
                         }}>{'正在加载...'}</Text>
                     </View>
                 </TouchableOpacity>

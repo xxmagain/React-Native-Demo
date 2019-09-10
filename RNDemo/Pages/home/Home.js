@@ -13,12 +13,14 @@ import {SCREEN_WIDTH} from '../Constant'
 import Swiper from "../../node_modules/react-native-swiper/index";
 import ArticleItem from "./items/ArticleItem";
 import Navigation from "../common/Navigation";
+import {Size} from "../tools/ScreenTools";
 
 export default class Home extends Component<{}> {
     constructor(props) {
         super(props)
         this.state = {
-            data: ''
+            data: '',
+            navData:['体育' ,'娱乐','金融','生活','科技']
         }
     }
 
@@ -36,15 +38,15 @@ export default class Home extends Component<{}> {
 
     renderSwiper() {
         return (
-            <View style={{height: 200}}>
-                <Swiper autoplay loop={true} style={{height: 200}} paginationStyle={{
-                    bottom: 10,
+            <View style={{height: Size(200)}}>
+                <Swiper autoplay loop={true} style={{height: Size(200)}} paginationStyle={{
+                    bottom: Size(10),
                 }}>
-                    <Image style={{width: '100%', height: 200}}
+                    <Image style={{width: '100%', height: Size(200)}}
                            source={require('../images/swiperImg/3.jpeg')}/>
-                    <Image style={{width: '100%', height: 200}}
+                    <Image style={{width: '100%', height: Size(200)}}
                            source={require('../images/swiperImg/1.jpg')}/>
-                    <Image style={{width: '100%', height: 200}}
+                    <Image style={{width: '100%', height: Size(200)}}
                            source={require('../images/swiperImg/2.jpg')}/>
                 </Swiper>
             </View>
@@ -68,13 +70,51 @@ export default class Home extends Component<{}> {
             />
         )
     }
-
+    renderNavItem({item}){
+        return(
+            <View
+                style={{
+                    flexDirection:'row',
+                    alignItems:'center',
+                    justifyContent:'center',
+                    width:Size(80),
+                    height:Size(40)
+                }}
+            >
+                <Text
+                    style={{
+                        fontSize:Size(14),
+                        color:'#fff',
+                        fontWeight:'bold'
+                    }}
+                >
+                    {item}
+                </Text>
+            </View>
+        )
+    }
+    renderNavBar(){
+        return(
+            <FlatList
+                style={{
+                    backgroundColor:'#d81e06'
+                }}
+                showsHorizontalScrollIndicator={false}
+                horizontal={true}
+                data={this.state.navData}
+                renderItem={this.renderNavItem.bind(this)}
+            />
+        )
+    }
     render() {
         return (
             <View style={styles.container}>
                 {this.renderNav()}
-                <ScrollView>
+                <ScrollView
+                    stickyHeaderIndices={[1]}
+                >
                     {this.renderSwiper()}
+                    {this.renderNavBar()}
                     {this.renderContent()}
                 </ScrollView>
             </View>
@@ -87,7 +127,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     tabBarIcon: {
-        width: 21,
-        height: 21,
+        width: Size(21),
+        height: Size(21),
     }
 });

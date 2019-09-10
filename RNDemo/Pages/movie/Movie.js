@@ -11,6 +11,7 @@ import LoadingView from "../common/LoadingView";
 import MovieItem from "./items/MovieListItem";
 import Navigation from "../common/Navigation";
 import {Actions} from "react-native-router-flux";
+import {Size} from "../tools/ScreenTools";
 export default class movie extends Component {
     constructor(props) {
         super(props)
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     tabBarIcon: {
-        width: 21,
-        height: 21,
+        width: Size(21),
+        height: Size(21),
     }
 });

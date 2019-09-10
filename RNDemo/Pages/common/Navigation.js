@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Text, View, TouchableOpacity,StatusBar} from "react-native";
 import Icon from '../icon/IconFont';
 import {Actions} from "react-native-router-flux";
+import {Size} from "../tools/ScreenTools";
 
 export default class Navigation extends Component<{}> {
     constructor(props) {
@@ -17,7 +18,7 @@ export default class Navigation extends Component<{}> {
                 flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: 64,
+                height: Size(64),
                 backgroundColor: '#fff',
             }}>
                 <StatusBar
@@ -29,13 +30,13 @@ export default class Navigation extends Component<{}> {
                 />
                 <View style={{
                     width: '100%',
-                    height: 64,
+                    height: Size(64),
                     alignItems: 'center',
                     justifyContent: 'center',
-                    paddingTop: 20,
+                    paddingTop: Size(20),
                     backgroundColor: '#fff'
                 }}>
-                    <Text style={{fontSize: 18, color: '#282828', fontWeight: 'bold'}}>{this.title}</Text>
+                    <Text style={{fontSize: Size(18), color: '#282828', fontWeight: 'bold'}}>{this.title}</Text>
                     {
                         this.showBack ?
                             <TouchableOpacity
@@ -43,8 +44,8 @@ export default class Navigation extends Component<{}> {
                                     Actions.pop()
                                 }}
                                 style={{
-                                    width: 100,
-                                    position: 'absolute', left: 0, top: 27
+                                    width: Size(100),
+                                    position: 'absolute', left: 0, top: Size(27)
                                 }}>
                                 <Icon name={'left'} size={30}/>
                             </TouchableOpacity>

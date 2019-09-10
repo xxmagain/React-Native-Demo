@@ -3,6 +3,7 @@ import Navigation from "../../common/Navigation";
 import {ScrollView, View, Image, Text, TouchableOpacity,ToastAndroid} from "react-native";
 import * as AppStorage from "../../tools/APPStorage";
 import Toast from 'react-native-root-toast';
+import {Size} from "../../tools/ScreenTools";
 var postsData = require('../../data/posts-data.js')
 export default class ArticleDetail extends PureComponent<{}>{
     constructor(props) {
@@ -43,43 +44,43 @@ export default class ArticleDetail extends PureComponent<{}>{
         return (
             <ScrollView style={{
                 flex: 1,
-                marginBottom: 30
+                marginBottom: Size(30)
             }}>
                 <Image source={{uri: this.state.data.headImgSrc}} style={{
                     width: '100%',
-                    height: 240
+                    height: Size(240)
                 }}/>
                 <View style={{
                     flexDirection: 'row',
-                    padding: 16,
+                    padding: Size(16),
                     alignItems: 'center',
                 }}>
                     <Image source={{uri: this.state.data.avatar}} style={{width: 40, height: 40, borderRadius: 20}}
                            resizeMode={'contain'}/>
                     <Text style={{
-                        fontSize: 16,
+                        fontSize: Size(16),
                         color: '#666',
-                        marginLeft: 8,
-                        marginRight: 8
+                        marginLeft: Size(8),
+                        marginRight: Size(8)
                     }}>{this.state.data.author}</Text>
                     <Text style={{
-                        fontSize: 14,
+                        fontSize: Size(14),
                         color: '#999'
                     }}>{'发表于    ' + this.state.data.dateTime}</Text>
                 </View>
                 <Text style={{
-                    fontSize: 16,
+                    fontSize: Size(16),
                     color: '#4b556c',
-                    marginBottom: 10,
+                    marginBottom: Size(10),
                     fontWeight: 'bold',
-                    lineHeight: 20,
-                    marginLeft: 16,
-                    marginRight: 16
+                    lineHeight: Size(20),
+                    marginLeft: Size(16),
+                    marginRight: Size(16)
                 }}>{this.state.data.title}</Text>
                 <View style={{
-                    marginLeft: 16,
-                    marginRight: 16,
-                    height: 65,
+                    marginLeft: Size(16),
+                    marginRight: Size(16),
+                    height: Size(65),
                     justifyContent: 'center'
                 }}>
                     <View style={{
@@ -100,23 +101,23 @@ export default class ArticleDetail extends PureComponent<{}>{
                             <Image
                                 resizeMode={'cover'}
                                 source={url} style={{
-                                width: 45,
-                                height: 45,
+                                width: Size(45),
+                                height: Size(45),
                             }}/>
                         </TouchableOpacity>
                         <Image source={require('../../images/details/share.png')} style={{
-                            marginLeft: 10,
-                            width: 45,
-                            height: 45,
+                            marginLeft: Size(10),
+                            width:Size(45),
+                            height: Size(45),
                         }}/>
                     </View>
                 </View>
                 <Text style={{
-                    fontSize: 14,
-                    lineHeight: 18,
+                    fontSize: Size(14),
+                    lineHeight: Size(18),
                     color: '#666',
-                    marginLeft: 16,
-                    marginRight: 16,
+                    marginLeft: Size(16),
+                    marginRight: Size(16),
                 }}>{this.state.data.detail}</Text>
             </ScrollView>
         )

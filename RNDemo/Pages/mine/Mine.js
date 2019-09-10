@@ -5,6 +5,7 @@ import {
     Image,
     StyleSheet,
 } from 'react-native';
+import {Size} from "../tools/ScreenTools";
 
 export default class mine extends Component {
     render() {
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     tabBarIcon: {
-        width: 21,
-        height: 21,
+        width: Size(21),
+        height: Size(21),
     }
 });

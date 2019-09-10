@@ -5,6 +5,7 @@ import {SCREEN_WIDTH} from '../../Constant'
 import Starts from "./Starts";
 import Tools from '../../tools/Tools'
 import MovieItem from "./MovieItem";
+import {Size} from "../../tools/ScreenTools";
 export default class MovieListItem extends Component<{}> {
     constructor(props) {
         super(props)
@@ -18,10 +19,10 @@ export default class MovieListItem extends Component<{}> {
         return (
             <View style={{
                 flexDirection: 'column',
-                padding: 16,
+                padding: Size(16),
                 backgroundColor: '#fff',
                 width: '100%',
-                marginBottom:16
+                marginBottom:Size(16)
             }}>
                 <View style={{
                     flexDirection: 'row',
@@ -29,7 +30,7 @@ export default class MovieListItem extends Component<{}> {
                     alignItems: 'center'
                 }}>
                     <Text style={{
-                        fontSize: 12,
+                        fontSize: Size(12),
                         color: '#666'
                     }}>{this.props.titleType}</Text>
                     <TouchableOpacity
@@ -42,8 +43,8 @@ export default class MovieListItem extends Component<{}> {
                     }}>
                         <Text style={{
                             color: '#1f4ba5',
-                            fontSize: 12,
-                            marginRight: 2
+                            fontSize: Size(12),
+                            marginRight: Size(2)
                         }}>{'更多'}</Text>
                         <Icon name={'right'} size={18} color={'#1f4ba5'}/>
                     </TouchableOpacity>

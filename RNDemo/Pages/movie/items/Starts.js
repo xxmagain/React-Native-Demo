@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import {View,Image} from "react-native";
+import {Size} from "../../tools/ScreenTools";
 
 export default class Starts extends Component<{}>{
     constructor(props){
@@ -20,8 +21,8 @@ export default class Starts extends Component<{}>{
                             <Image
                                 source={item?require('../../images/movie/star.png'):require('../../images/movie/none-star.png')}
                                 style={{
-                                    width:10,
-                                    height:10,
+                                    width:Size(10),
+                                    height:Size(10),
                                 }}
                             />
                         )
