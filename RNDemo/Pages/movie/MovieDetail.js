@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ScrollView, Image, Text, findNodeHandle,FlatList} from "react-native";
+import {View, ScrollView, Image, Text, findNodeHandle,FlatList,TouchableOpacity} from "react-native";
 import Navigation from "../common/Navigation";
 import Starts from "./items/Starts";
 import * as Tools from "../tools/Tools";
@@ -7,7 +7,8 @@ import * as Http from "../network/Http";
 import LoadingView from "../common/LoadingView";
 import {BlurView} from "react-native-blur";
 import {SCREEN_WIDTH, Size} from "../tools/ScreenTools";
-
+import Icon from '../icon/IconFont';
+import {Actions} from "react-native-router-flux";
 export default class MovieDetail extends Component<{}> {
     constructor(props) {
         super(props)
@@ -45,7 +46,7 @@ export default class MovieDetail extends Component<{}> {
         return (
             <View style={{
                 width: SCREEN_WIDTH,
-                height: Size(220)
+                height: Size(230)
             }}>
                 <Image
                     ref={(img) => {
@@ -53,7 +54,7 @@ export default class MovieDetail extends Component<{}> {
                     }}
                     style={{
                         width: '100%',
-                        height: Size(220),
+                        height: Size(230),
                         position: 'absolute',
                         backgroundColor: 'transparent'
                     }}
@@ -64,7 +65,7 @@ export default class MovieDetail extends Component<{}> {
                 <View style={{
                     position: 'absolute',
                     width: SCREEN_WIDTH,
-                    height: Size(220),
+                    height: Size(230),
                     left: Size(16),
                     top: 0,
                     flexDirection: 'column'
@@ -73,7 +74,7 @@ export default class MovieDetail extends Component<{}> {
                         fontSize: Size(24),
                         fontWeight: 'bold',
                         color: '#fff',
-                        marginTop: Size(40)
+                        marginTop: Size(70)
                     }}>
                         {this.state.data.original_title&&this.state.data.original_title.substr(0,6)}
                     </Text>
@@ -256,6 +257,23 @@ export default class MovieDetail extends Component<{}> {
             </View>
         )
     }
+    setNavOpacity(event){
+        let y = event.nativeEvent.contentOffset.y
+        let opacityPercent = y / 250
+        if (y < 250) {
+            this.navBar.setNativeProps({
+                style: {
+                    opacity: opacityPercent,
+                }
+            })
+        } else {
+            this.navBar.setNativeProps({
+                style: {
+                    opacity: 1,
+                }
+            })
+        }
+    }
     render() {
         if (this.state.isLoading) {
             return (
@@ -266,10 +284,14 @@ export default class MovieDetail extends Component<{}> {
             <View style={{
                 flex: 1,
             }}>
-                <Navigation title={'电影详情'} showBack={true}/>
-                <ScrollView style={{
-                    backgroundColor: '#fff',
-                }}>
+                <ScrollView
+                    style={{
+                        backgroundColor: '#fff',
+                    }}
+                    onScroll={(e)=>{
+                        this.setNavOpacity(e)
+                    }}
+                >
                     {this.renderTop()}
                     <Image
                         style={{
@@ -283,6 +305,20 @@ export default class MovieDetail extends Component<{}> {
                         source={{uri: this.state.data.images && this.state.data.images.large}}
                         resizeMode={'cover'}
                     />
+                    <TouchableOpacity
+                        onPress={() => {
+                            Actions.pop()
+                        }}
+                        style={{
+                            width: Size(100),
+                            position: 'absolute',
+                            left: Size(5),
+                            top: Size(27),
+                            backgroundColor:'transparent',
+                            borderRadius:Size(15),
+                        }}>
+                        <Icon name={'left'} size={30} color={'#fff'}/>
+                    </TouchableOpacity>
                     {this.renderInfo()}
                     <View style={{backgroundColor:'#eee',width:'100%',height:1,marginTop:Size(20)}}/>
                     {this.renderDescription()}
@@ -290,6 +326,15 @@ export default class MovieDetail extends Component<{}> {
                     {this.renderCast()}
                     <View style={{width:'100%',height:Size(40),marginTop:Size(20)}}/>
                 </ScrollView>
+                <View
+                    ref={ref => this.navBar = ref}
+                    style={{
+                        opacity:0,
+                        position: 'absolute',
+                    }}
+                >
+                    <Navigation   title={'电影详情'} showBack={true}/>
+                </View>
             </View>
         )
     }

@@ -7,12 +7,11 @@ import {
     Image,
     FlatList,
     StyleSheet,
-    ScrollView
+    ScrollView, StatusBar, TouchableOpacity
 } from 'react-native';
 import {SCREEN_WIDTH} from '../Constant'
 import Swiper from "../../node_modules/react-native-swiper/index";
 import ArticleItem from "./items/ArticleItem";
-import Navigation from "../common/Navigation";
 import {Size} from "../tools/ScreenTools";
 
 export default class Home extends Component<{}> {
@@ -20,7 +19,8 @@ export default class Home extends Component<{}> {
         super(props)
         this.state = {
             data: '',
-            navData:['体育' ,'娱乐','金融','生活','科技']
+            navData:[{name:'精选',selected:true},{name:'体育',selected:false} ,{name:'娱乐',selected:false},{name:'金融',selected:false},{name:'体育',selected:false},{name:'生活',selected:false}],
+            index:0,
         }
     }
 
@@ -29,13 +29,6 @@ export default class Home extends Component<{}> {
             data: postData.postList
         })
     }
-
-    renderNav() {
-        return (
-            <Navigation title={"首页"} showBack={false}/>
-        )
-    }
-
     renderSwiper() {
         return (
             <View style={{height: Size(200)}}>
@@ -70,15 +63,28 @@ export default class Home extends Component<{}> {
             />
         )
     }
-    renderNavItem({item}){
+    renderNavItem({item,index}){
         return(
-            <View
+            <TouchableOpacity
                 style={{
-                    flexDirection:'row',
+                    flexDirection:'column',
                     alignItems:'center',
                     justifyContent:'center',
                     width:Size(80),
-                    height:Size(40)
+                    height:Size(40),
+                }}
+                onPress={()=>{
+                    var data = this.state.navData;
+                    for(let i=0;i<data.length;i++){
+                        if(i===index){
+                            data[index].selected = !this.state.navData[index].selected;
+                        }else {
+                            data[i].selected  = false;
+                        }
+                    }
+                    this.setState({
+                        navData:data
+                    })
                 }}
             >
                 <Text
@@ -88,33 +94,57 @@ export default class Home extends Component<{}> {
                         fontWeight:'bold'
                     }}
                 >
-                    {item}
+                    {item.name}
                 </Text>
-            </View>
+                {
+                    item.selected?
+                        <View style={{
+                            marginTop:Size(4),
+                            width:Size(32),
+                            height:Size(1),
+                            backgroundColor:'#fff'
+                        }}/>
+                        :null
+                }
+
+            </TouchableOpacity>
         )
     }
     renderNavBar(){
         return(
-            <FlatList
-                style={{
-                    backgroundColor:'#d81e06'
-                }}
-                showsHorizontalScrollIndicator={false}
-                horizontal={true}
-                data={this.state.navData}
-                renderItem={this.renderNavItem.bind(this)}
-            />
+            <View>
+               <View style={{
+                   backgroundColor:'#d81e06',
+                   height:Size(24),
+                   width:SCREEN_WIDTH,
+               }}/>
+                <FlatList
+                    style={{
+                        backgroundColor:'#d81e06',
+                    }}
+                    showsHorizontalScrollIndicator={false}
+                    horizontal={true}
+                    data={this.state.navData}
+                    renderItem={this.renderNavItem.bind(this)}
+                />
+            </View>
         )
     }
     render() {
         return (
             <View style={styles.container}>
-                {this.renderNav()}
+                <StatusBar
+                    animated={true} //指定状态栏的变化是否应以动画形式呈现。目前支持这几种样式：backgroundColor, barStyle和hidden
+                    hidden={false}  //是否隐藏状态栏。
+                    backgroundColor={'#ff000000'} //状态栏的背景色
+                    translucent={true}//指定状态栏是否透明。设置为true时，应用会在状态栏之下绘制（即所谓“沉浸式”——被状态栏遮住一部分）。常和带有半透明背景色的状态栏搭配使用。
+                    barStyle={'dark-content'} // enum('default', 'light-content', 'dark-content')
+                />
                 <ScrollView
-                    stickyHeaderIndices={[1]}
+                    stickyHeaderIndices={[0]}
                 >
-                    {this.renderSwiper()}
                     {this.renderNavBar()}
+                    {this.renderSwiper()}
                     {this.renderContent()}
                 </ScrollView>
             </View>
